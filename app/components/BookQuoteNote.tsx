@@ -36,12 +36,17 @@ export default function BookQuoteNote({ content }: BookQuoteNoteProps) {
 
   const { title, author, quote } = processContent(content);
 
-  // Format quote for display - single line without extra quotes
-  let displayQuote = quote.replace(/\n/g, ' ').trim();
-  // Remove surrounding quotes if present
-  if (displayQuote.startsWith('"') && displayQuote.endsWith('"')) {
-    displayQuote = displayQuote.slice(1, -1);
-  }
+  // Format quote for display while preserving paragraph breaks
+  // Split by double newlines to identify paragraphs
+  const paragraphs = quote.split(/\n\s*\n/).map(p => p.trim().replace(/\n/g, ' '));
+  
+  // Remove surrounding quotes if present in each paragraph
+  const formattedParagraphs = paragraphs.map(p => {
+    if (p.startsWith('"') && p.endsWith('"')) {
+      return p.slice(1, -1);
+    }
+    return p;
+  });
 
   return (
     <div className="book-quote-container">
@@ -53,7 +58,14 @@ export default function BookQuoteNote({ content }: BookQuoteNoteProps) {
       </div>
       
       <div className="book-quote">
-        "{displayQuote}"
+        <span>
+          "{formattedParagraphs.map((paragraph, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && <><br /><br /></>}
+              {paragraph}
+            </React.Fragment>
+          ))}"
+        </span>
       </div>
     </div>
   );

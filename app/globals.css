@@ -186,7 +186,7 @@ body {
 
 .book-author {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
@@ -198,7 +198,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0 3rem;
+  margin: 0 auto 3rem;
+  width: 160px;
 }
 
 .book-divider::before, 
@@ -206,7 +207,7 @@ body {
   content: "";
   flex: 1;
   border-bottom: 1px solid #9e8e71;
-  margin: 0 1rem;
+  margin: 0 0.75rem;
 }
 
 .book-divider-icon {
@@ -226,4 +227,8 @@ body {
   font-style: normal;
   font-weight: 600;
   text-shadow: 0.15px 0.15px 0 #333;
+}
+
+.book-quote br + br {
+  margin-top: 0.5rem;
 }
