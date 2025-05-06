@@ -59,12 +59,12 @@ export default function BookQuoteNote({ content }: BookQuoteNoteProps) {
       
       <div className="book-quote">
         <span>
-          "{formattedParagraphs.map((paragraph, index) => (
+          &ldquo;{formattedParagraphs.map((paragraph, index) => (
             <React.Fragment key={index}>
               {index > 0 && <><br /><br /></>}
               {paragraph}
             </React.Fragment>
-          ))}"
+          ))}&rdquo;
         </span>
       </div>
     </div>

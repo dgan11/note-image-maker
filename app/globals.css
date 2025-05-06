@@ -167,7 +167,7 @@ body {
   border: 1px solid #d3c9a9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: #333;
+  color: #3d3427;
   aspect-ratio: 4/5;
   display: flex;
   flex-direction: column;
@@ -181,7 +181,8 @@ body {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   font-family: 'Courier New', monospace;
-  text-shadow: 0.2px 0.2px 0 #333;
+  text-shadow: 0.2px 0.2px 0 #3d3427;
+  color: #3d3427;
 }
 
 .book-author {
@@ -191,7 +192,8 @@ body {
   letter-spacing: 0.08em;
   font-weight: 600;
   font-family: 'Courier New', monospace;
-  text-shadow: 0.15px 0.15px 0 #333;
+  text-shadow: 0.15px 0.15px 0 #3d3427;
+  color: #3d3427;
 }
 
 .book-divider {
@@ -206,14 +208,14 @@ body {
 .book-divider::after {
   content: "";
   flex: 1;
-  border-bottom: 1px solid #9e8e71;
+  border-bottom: 1px solid #8c7e6a;
   margin: 0 0.75rem;
 }
 
 .book-divider-icon {
   width: 8px;
   height: 8px;
-  background-color: #9e8e71;
+  background-color: #8c7e6a;
   transform: rotate(45deg);
 }
 
@@ -226,7 +228,8 @@ body {
   letter-spacing: 0.08em;
   font-style: normal;
   font-weight: 600;
-  text-shadow: 0.15px 0.15px 0 #333;
+  text-shadow: 0.15px 0.15px 0 #3d3427;
+  color: #3d3427;
 }
 
 .book-quote br + br {
