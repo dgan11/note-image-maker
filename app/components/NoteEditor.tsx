@@ -2,7 +2,11 @@
 
 import React, { useState, useRef } from 'react';
 import StyledNote from './StyledNote';
+import BookQuoteNote from './BookQuoteNote';
 import html2canvas from 'html2canvas';
+
+// Template types
+type TemplateType = 'styled' | 'book-quote';
 
 export default function NoteEditor() {
   const [markdown, setMarkdown] = useState(`Looks good. Feels off. Here's why.
@@ -25,6 +29,7 @@ Without it, you're just speedrunning your own confusion.
 At some point, you've gotta stop asking ChatGPT and start asking yourself.`);
   
   const [isEditing, setIsEditing] = useState(false);
+  const [template, setTemplate] = useState<TemplateType>('styled');
   const noteContainerRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = async () => {
@@ -32,17 +37,28 @@ At some point, you've gotta stop asking ChatGPT and start asking yourself.`);
     
     try {
       const canvas = await html2canvas(noteContainerRef.current, {
-        backgroundColor: '#f0f0f0',
+        backgroundColor: template === 'styled' ? '#f0f0f0' : '#f5f1e4',
         scale: 2, // Higher quality
       });
       
       const image = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = image;
-      link.download = 'stylized-note.png';
+      link.download = `${template}-note.png`;
       link.click();
     } catch (error) {
       console.error('Error generating image:', error);
+    }
+  };
+
+  // Render the selected note template
+  const renderNoteTemplate = () => {
+    switch (template) {
+      case 'book-quote':
+        return <BookQuoteNote content={markdown} />;
+      case 'styled':
+      default:
+        return <StyledNote content={markdown} />;
     }
   };
 
@@ -77,8 +93,24 @@ At some point, you've gotta stop asking ChatGPT and start asking yourself.`);
           >
             Download
           </button>
+          
+          <div className="template-selector">
+            <button 
+              className={`template-button ${template === 'styled' ? 'active' : ''}`}
+              onClick={() => setTemplate('styled')}
+            >
+              Style 1
+            </button>
+            <button 
+              className={`template-button ${template === 'book-quote' ? 'active' : ''}`}
+              onClick={() => setTemplate('book-quote')}
+            >
+              Style 2
+            </button>
+          </div>
+          
           <div className="note-preview-container" ref={noteContainerRef}>
-            <StyledNote content={markdown} />
+            {renderNoteTemplate()}
           </div>
         </div>
       )}

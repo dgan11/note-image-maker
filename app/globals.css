@@ -133,3 +133,83 @@ body {
   padding: 3rem;
   background-color: #f0f0f0;
 }
+
+/* Template selector */
+.template-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.template-button {
+  padding: 0.5rem 1rem;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.template-button.active {
+  background-color: #333;
+  color: white;
+}
+
+/* Book quote template */
+.book-quote-container {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 4rem 3rem;
+  background-color: #f5f1e4;
+  border: 1px solid #d3c9a9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #333;
+}
+
+.book-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.book-author {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.book-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.book-divider::before, 
+.book-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #9e8e71;
+  margin: 0 1rem;
+}
+
+.book-divider-icon {
+  width: 10px;
+  height: 10px;
+  background-color: #9e8e71;
+  transform: rotate(45deg);
+}
+
+.book-quote {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 80%;
+  font-style: italic;
+}
