@@ -36,6 +36,13 @@ export default function BookQuoteNote({ content }: BookQuoteNoteProps) {
 
   const { title, author, quote } = processContent(content);
 
+  // Format quote for display - single line without extra quotes
+  let displayQuote = quote.replace(/\n/g, ' ').trim();
+  // Remove surrounding quotes if present
+  if (displayQuote.startsWith('"') && displayQuote.endsWith('"')) {
+    displayQuote = displayQuote.slice(1, -1);
+  }
+
   return (
     <div className="book-quote-container">
       <div className="book-title">{title}</div>
@@ -46,7 +53,7 @@ export default function BookQuoteNote({ content }: BookQuoteNoteProps) {
       </div>
       
       <div className="book-quote">
-        "{quote}"
+        "{displayQuote}"
       </div>
     </div>
   );

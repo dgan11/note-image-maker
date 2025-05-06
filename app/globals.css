@@ -130,7 +130,7 @@ body {
 /* Container for download */
 .note-preview-container {
   position: relative;
-  padding: 3rem;
+  padding: 2rem;
   background-color: #f0f0f0;
 }
 
@@ -160,14 +160,18 @@ body {
 
 /* Book quote template */
 .book-quote-container {
-  max-width: 650px;
+  max-width: 600px;
   margin: 2rem auto;
-  padding: 4rem 3rem;
+  padding: 4rem 2.5rem 2rem;
   background-color: #f5f1e4;
   border: 1px solid #d3c9a9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   color: #333;
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .book-title {
@@ -176,19 +180,25 @@ body {
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0.2px 0.2px 0 #333;
 }
 
 .book-author {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0.15px 0.15px 0 #333;
 }
 
 .book-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin: 2rem 0 3rem;
 }
 
 .book-divider::before, 
@@ -200,16 +210,20 @@ body {
 }
 
 .book-divider-icon {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #9e8e71;
   transform: rotate(45deg);
 }
 
 .book-quote {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.8;
   margin: 0 auto;
-  max-width: 80%;
-  font-style: italic;
+  max-width: 90%;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.08em;
+  font-style: normal;
+  font-weight: 600;
+  text-shadow: 0.15px 0.15px 0 #333;
 }

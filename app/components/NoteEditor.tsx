@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import StyledNote from './StyledNote';
 import BookQuoteNote from './BookQuoteNote';
 import html2canvas from 'html2canvas';
@@ -8,8 +8,7 @@ import html2canvas from 'html2canvas';
 // Template types
 type TemplateType = 'styled' | 'book-quote';
 
-export default function NoteEditor() {
-  const [markdown, setMarkdown] = useState(`Looks good. Feels off. Here's why.
+const DEFAULT_STYLED_TEXT = `Looks good. Feels off. Here's why.
 By: Elan Miller
 
 A founder told me they used AI to build their brand in 48 hours. Name, deck, site—done by Sunday.
@@ -26,11 +25,27 @@ That's the part that gives you conviction.
 
 Without it, you're just speedrunning your own confusion.
 
-At some point, you've gotta stop asking ChatGPT and start asking yourself.`);
-  
+At some point, you've gotta stop asking ChatGPT and start asking yourself.`;
+
+const DEFAULT_BOOK_TEXT = `East of Eden
+By: John Steinbeck
+
+And now that you don't have to be perfect, you can be good.`;
+
+export default function NoteEditor() {
+  const [markdown, setMarkdown] = useState(DEFAULT_STYLED_TEXT);
   const [isEditing, setIsEditing] = useState(false);
   const [template, setTemplate] = useState<TemplateType>('styled');
   const noteContainerRef = useRef<HTMLDivElement>(null);
+
+  // Switch content when template changes
+  useEffect(() => {
+    if (template === 'styled') {
+      setMarkdown(DEFAULT_STYLED_TEXT);
+    } else if (template === 'book-quote') {
+      setMarkdown(DEFAULT_BOOK_TEXT);
+    }
+  }, [template]);
 
   const handleDownload = async () => {
     if (!noteContainerRef.current) return;
